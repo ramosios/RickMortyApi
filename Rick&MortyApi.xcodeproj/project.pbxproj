@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		C14959A12E8FD60A008FD49B /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = C14959A02E8FD60A008FD49B /* RealmSwift */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		C14958992E8FCCBD008FD49B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -52,6 +56,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C14959A12E8FD60A008FD49B /* RealmSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -112,6 +117,7 @@
 			);
 			name = "Rick&MortyApi";
 			packageProductDependencies = (
+				C14959A02E8FD60A008FD49B /* RealmSwift */,
 			);
 			productName = "Rick&MortyApi";
 			productReference = C14958882E8FCCBB008FD49B /* Rick&MortyApi.app */;
@@ -195,6 +201,9 @@
 			);
 			mainGroup = C149587F2E8FCCBB008FD49B;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				C149599F2E8FD60A008FD49B /* XCRemoteSwiftPackageReference "realm-swift" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = C14958892E8FCCBB008FD49B /* Products */;
 			projectDirPath = "";
@@ -558,6 +567,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		C149599F2E8FD60A008FD49B /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		C14959A02E8FD60A008FD49B /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C149599F2E8FD60A008FD49B /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = C14958802E8FCCBB008FD49B /* Project object */;
 }
