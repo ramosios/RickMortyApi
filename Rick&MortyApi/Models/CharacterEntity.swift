@@ -25,5 +25,15 @@ class CharacterEntity: Object, Identifiable {
 
 class LocationReferenceEntity: Object {
     @Persisted var name: String = ""
-    @Persisted var url: String = ""
+    @Persisted var id: Int = -1
+
+    convenience init(from dto: LocationReference) {
+        self.init()
+        self.name = dto.name
+        self.id = LocationReferenceEntity.extractId(from: dto.url)
+    }
+    
+    private static func extractId(from url: String) -> Int {
+        return Int(url.split(separator: "/").last ?? "") ?? -1
+    }
 }
