@@ -12,10 +12,10 @@ class LocationEntity: Object, Identifiable {
     @Persisted var name: String = ""
     @Persisted var type: String = ""
     @Persisted var dimension: String = ""
-    @Persisted var residents = List<Int>()   // 👈 store resident IDs as Int
+    @Persisted var residents = List<Int>()
     @Persisted var url: String = ""
     @Persisted var created: String = ""
-    @Persisted var updatedAt: Date = Date()  // for freshness
+    @Persisted var updatedAt: Date = Date()
 }
 
 extension LocationEntity {
@@ -28,10 +28,6 @@ extension LocationEntity {
         self.url = dto.url
         self.created = dto.created
         self.updatedAt = Date()
-        let ids = dto.residents.compactMap { urlString -> Int? in
-            guard let last = urlString.split(separator: "/").last else { return nil }
-            return Int(last)
-        }
-        self.residents.append(objectsIn: ids)
+        self.residents.append(objectsIn: URLExtractor.extractIds(from: dto.residents))
     }
 }
