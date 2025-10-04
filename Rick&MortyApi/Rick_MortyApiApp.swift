@@ -9,16 +9,12 @@ import SwiftUI
 
 @main
 struct Rick_MortyApiApp: App {
-    init() {
-        do {
-            try RealmDatabaseGenerator.generate()
-        } catch {
-            print("Error generating Realm database: \(error)")
-        }
-    }
+    @StateObject private var realmManager = RealmManager()
+
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(realmManager)
         }
     }
 }
