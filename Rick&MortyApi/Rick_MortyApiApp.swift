@@ -13,7 +13,7 @@ struct Rick_MortyApiApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            TabBarView()
                 .environmentObject(realmManager)
         }
     }

@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct CharactersView: View {
     @EnvironmentObject var realmManager: RealmManager
     var body: some View {
         VStack {
@@ -24,5 +24,5 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView()
+    CharactersView()
 }
