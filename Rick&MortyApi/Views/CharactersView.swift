@@ -4,11 +4,12 @@
 //
 //  Created by Jorge Ramos on 03/10/25.
 //
-
 import SwiftUI
 
 struct CharactersView: View {
-    @EnvironmentObject var realmManager: RealmManager
+    @EnvironmentObject private var realmManager: RealmManager
+    @StateObject private var viewModel = CharacterViewModel()
+
     var body: some View {
         VStack {
             Image(systemName: "globe")
@@ -16,13 +17,6 @@ struct CharactersView: View {
                 .foregroundStyle(.tint)
             Text("Hello, world!")
         }
-        .onAppear(){
-            realmManager.printAllLocations()
-        }
         .padding()
     }
-}
-
-#Preview {
-    CharactersView()
 }
