@@ -7,16 +7,18 @@
 import SwiftUI
 
 struct CharactersView: View {
-    @EnvironmentObject private var realmManager: RealmManager
-    @StateObject private var viewModel = CharacterViewModel()
+    @StateObject private var viewModel: CharacterViewModel
+
+    init(realmManager: RealmManager) {
+        _viewModel = StateObject(wrappedValue: CharacterViewModel(realmManager: realmManager))
+    }
 
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        NavigationView {
+            List(viewModel.characters, id: \.id) { character in
+                CharacterCell(character: character)
+            }
+            .navigationTitle("Characters")
         }
-        .padding()
     }
 }
