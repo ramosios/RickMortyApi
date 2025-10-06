@@ -14,11 +14,13 @@ struct CharactersView: View {
     }
 
     var body: some View {
-        NavigationView {
-            List(viewModel.characters, id: \.id) { character in
-                CharacterCell(character: character)
-            }
-            .navigationTitle("Characters")
-        }
-    }
-}
+           NavigationView {
+               List(viewModel.characters, id: \.id) { character in
+                   NavigationLink(destination: CharacterDetailView(character: character, viewModel: viewModel)) {
+                       CharacterCell(character: character)
+                   }
+               }
+               .navigationTitle("Characters")
+           }
+       }
+   }
