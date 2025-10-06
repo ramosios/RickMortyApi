@@ -8,6 +8,7 @@ import SwiftUI
 
 struct EpisodesView: View {
     @StateObject private var viewModel: EpisodeViewModel
+    @State private var searchText: String = ""
 
     init(realmManager: RealmManager) {
         _viewModel = StateObject(wrappedValue: EpisodeViewModel(realmManager: realmManager))
@@ -15,12 +16,15 @@ struct EpisodesView: View {
 
     var body: some View {
         NavigationView {
-            List(viewModel.episodes, id: \.id) { episode in
-                NavigationLink(destination: EpisodeDetailView(episode: episode, viewModel: viewModel)) {
-                    EpisodeCell(episode: episode)
+            VStack(spacing: 8) {
+                SearchBar(text: $searchText, placeholder: "Search by episode name")
+                List(viewModel.filteredEpisodes(searchText: searchText), id: \.id) { episode in
+                    NavigationLink(destination: EpisodeDetailView(episode: episode, viewModel: viewModel)) {
+                        EpisodeCell(episode: episode)
+                    }
                 }
+                .navigationTitle("Episodes")
             }
-            .navigationTitle("Episodes")
         }
     }
 }

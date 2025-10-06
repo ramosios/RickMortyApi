@@ -22,4 +22,11 @@ class EpisodeViewModel: ObservableObject {
         let results = realmManager.realm.objects(CharacterEntity.self).filter("id IN %@", ids)
         return Array(results)
     }
+    func filteredEpisodes(searchText: String) -> [EpisodeEntity] {
+        if searchText.isEmpty {
+            return episodes
+        } else {
+            return episodes.filter { $0.name.localizedCaseInsensitiveContains(searchText) }
+        }
+    }
 }

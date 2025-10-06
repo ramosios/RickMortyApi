@@ -15,6 +15,18 @@ class CharacterViewModel: ObservableObject {
         self.realmManager = realmManager
         fetchCharacters()
     }
+    
+    func filteredCharacters(searchText: String) -> [CharacterEntity] {
+        if searchText.isEmpty {
+            return characters
+        } else {
+            return characters.filter { character in
+                    character.name.localizedCaseInsensitiveContains(searchText) ||
+                    character.species.localizedCaseInsensitiveContains(searchText) ||
+                    (character.origin?.name.localizedCaseInsensitiveContains(searchText) ?? false)
+                }
+            }
+        }
 
     func fetchCharacters() {
         let results = realmManager.realm.objects(CharacterEntity.self)

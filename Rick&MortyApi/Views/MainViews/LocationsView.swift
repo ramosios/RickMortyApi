@@ -8,6 +8,7 @@ import SwiftUI
 
 struct LocationsView: View {
     @StateObject private var viewModel: LocationsViewModel
+    @State private var searchText: String = ""
 
     init(realmManager: RealmManager) {
         _viewModel = StateObject(wrappedValue: LocationsViewModel(realmManager: realmManager))
@@ -15,12 +16,15 @@ struct LocationsView: View {
 
     var body: some View {
         NavigationView {
-            List(viewModel.locations, id: \.id) { location in
-                NavigationLink(destination: LocationDetailView(location: location, viewModel: viewModel)) {
-                    LocationCell(location: location)
+            VStack(spacing: 8) {
+                SearchBar(text: $searchText, placeholder: "Search by name or type")
+                List(viewModel.filteredLocations(searchText: searchText), id: \.id) { location in
+                    NavigationLink(destination: LocationDetailView(location: location, viewModel: viewModel)) {
+                        LocationCell(location: location)
+                    }
                 }
+                .navigationTitle("Location")
             }
-            .navigationTitle("Location")
         }
     }
 }
