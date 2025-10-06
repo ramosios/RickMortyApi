@@ -19,12 +19,12 @@ struct TabBarView: View {
                     Label(CustomTabBarView.Tab.characters.title, systemImage: CustomTabBarView.Tab.characters.iconName)
                 }
 
-            LocationsView()
+            LocationsView(realmManager: realmManager)
                 .tag(CustomTabBarView.Tab.locations)
                 .tabItem {
                     Label(CustomTabBarView.Tab.locations.title, systemImage: CustomTabBarView.Tab.locations.iconName)
                 }
-            EpisodesView()
+            EpisodesView(realmManager: realmManager)
                 .tag(CustomTabBarView.Tab.episodes)
                 .tabItem {
                     Label(CustomTabBarView.Tab.episodes.title, systemImage: CustomTabBarView.Tab.episodes.iconName)

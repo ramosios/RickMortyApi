@@ -5,14 +5,13 @@
 //  Created by Jorge Ramos on 05/10/25.
 import Foundation
 import RealmSwift
-import SwiftUICore
 
 class LocationsViewModel: ObservableObject {
     @Published var locations: [LocationEntity] = []
-    @EnvironmentObject private var realmManager: RealmManager
-    private var notificationToken: NotificationToken?
+    private let realmManager: RealmManager
 
-    init() {
+    init(realmManager: RealmManager) {
+        self.realmManager = realmManager
         fetchLocations()
     }
     func fetchLocations() {

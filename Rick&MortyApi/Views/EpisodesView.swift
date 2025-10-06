@@ -7,16 +7,18 @@
 import SwiftUI
 
 struct EpisodesView: View {
-    @EnvironmentObject var realmManager: RealmManager
+    @StateObject private var viewModel: EpisodeViewModel
+
+    init(realmManager: RealmManager) {
+        _viewModel = StateObject(wrappedValue: EpisodeViewModel(realmManager: realmManager))
+    }
+
     var body: some View {
-        VStack {
-            Text("Episodes")
+        NavigationView {
+            List(viewModel.episodes, id: \.id) { episode in
+                EpisodeCell(episode: episode)
+            }
+            .navigationTitle("Episodes")
         }
-        .padding()
     }
 }
-
-#Preview {
-    EpisodesView()
-}
-

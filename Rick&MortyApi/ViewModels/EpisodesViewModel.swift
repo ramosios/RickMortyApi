@@ -5,14 +5,13 @@
 //  Created by Jorge Ramos on 05/10/25.
 import Foundation
 import RealmSwift
-import SwiftUICore
 
 class EpisodeViewModel: ObservableObject {
     @Published var episodes: [EpisodeEntity] = []
-    @EnvironmentObject private var realmManager: RealmManager
-    private var notificationToken: NotificationToken?
+    private let realmManager: RealmManager
 
-    init() {
+    init(realmManager: RealmManager) {
+        self.realmManager = realmManager
         fetchEpisodes()
     }
     func fetchEpisodes() {

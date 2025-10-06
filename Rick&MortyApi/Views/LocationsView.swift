@@ -7,16 +7,19 @@
 import SwiftUI
 
 struct LocationsView: View {
-    @EnvironmentObject var realmManager: RealmManager
-    var body: some View {
-        VStack {
-            Text("Locations")
-        }
-        .padding()
-    }
-}
+    @StateObject private var viewModel: LocationsViewModel
 
-#Preview {
-    LocationsView()
+    init(realmManager: RealmManager) {
+        _viewModel = StateObject(wrappedValue: LocationsViewModel(realmManager: realmManager))
+    }
+
+    var body: some View {
+        NavigationView {
+            List(viewModel.locations, id: \.id) { location in
+                LocationCell(location: location)
+            }
+            .navigationTitle("Location")
+        }
+    }
 }
 
