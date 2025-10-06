@@ -32,7 +32,6 @@ class RealmManager: ObservableObject {
 
         do {
             realm = try Realm(configuration: config)
-            print("Realm is located at: \(destinationURL.path)")
         } catch {
             fatalError("Error initializing Realm with preloaded file: \(error)")
         }
