@@ -16,10 +16,11 @@ struct LocationsView: View {
     var body: some View {
         NavigationView {
             List(viewModel.locations, id: \.id) { location in
-                LocationCell(location: location)
+                NavigationLink(destination: LocationDetailView(location: location, viewModel: viewModel)) {
+                    LocationCell(location: location)
+                }
             }
             .navigationTitle("Location")
         }
     }
 }
-

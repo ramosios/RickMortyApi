@@ -16,7 +16,9 @@ struct EpisodesView: View {
     var body: some View {
         NavigationView {
             List(viewModel.episodes, id: \.id) { episode in
-                EpisodeCell(episode: episode)
+                NavigationLink(destination: EpisodeDetailView(episode: episode, viewModel: viewModel)) {
+                    EpisodeCell(episode: episode)
+                }
             }
             .navigationTitle("Episodes")
         }
