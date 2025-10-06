@@ -14,20 +14,17 @@ struct TabBarView: View {
     var body: some View {
         TabView(selection: $selectedTab) {
             CharactersView(realmManager: realmManager)
-                .environmentObject(realmManager)
                 .tag(CustomTabBarView.Tab.characters)
                 .tabItem {
                     Label(CustomTabBarView.Tab.characters.title, systemImage: CustomTabBarView.Tab.characters.iconName)
                 }
 
             LocationsView()
-                .environmentObject(realmManager)
                 .tag(CustomTabBarView.Tab.locations)
                 .tabItem {
                     Label(CustomTabBarView.Tab.locations.title, systemImage: CustomTabBarView.Tab.locations.iconName)
                 }
             EpisodesView()
-                .environmentObject(realmManager)
                 .tag(CustomTabBarView.Tab.episodes)
                 .tabItem {
                     Label(CustomTabBarView.Tab.episodes.title, systemImage: CustomTabBarView.Tab.episodes.iconName)

@@ -37,16 +37,4 @@ class RealmManager: ObservableObject {
             fatalError("Error initializing Realm with preloaded file: \(error)")
         }
     }
-    func printAllLocations() {
-           let locations = realm.objects(LocationEntity.self)
-           print("--- All Locations in Realm ---")
-           if locations.isEmpty {
-               print("No locations found.")
-           } else {
-               for location in locations {
-                   print(location)
-               }
-           }
-           print("------------------------------")
-    }
 }
