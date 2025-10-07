@@ -10,8 +10,8 @@ struct EpisodesView: View {
     @StateObject private var viewModel: EpisodeViewModel
     @State private var searchText: String = ""
 
-    init(realmManager: RealmManager) {
-        _viewModel = StateObject(wrappedValue: EpisodeViewModel(realmManager: realmManager))
+    init(repository: Repository) {
+        _viewModel = StateObject(wrappedValue: EpisodeViewModel(repository: repository))
     }
 
     var body: some View {

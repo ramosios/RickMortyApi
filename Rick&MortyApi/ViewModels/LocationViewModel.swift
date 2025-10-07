@@ -8,19 +8,17 @@ import RealmSwift
 
 class LocationsViewModel: ObservableObject {
     @Published var locations: [LocationEntity] = []
-    private let realmManager: RealmManager
+    private let repository: Repository
 
-    init(realmManager: RealmManager) {
-        self.realmManager = realmManager
+    init(repository: Repository) {
+        self.repository = repository
         fetchLocations()
     }
     func fetchLocations() {
-        let results = realmManager.realm.objects(LocationEntity.self)
-        self.locations = Array(results)
+        self.locations = repository.fetchAllLocations()
     }
     func fetchCharacters(by ids: [Int]) -> [CharacterEntity] {
-           let results = realmManager.realm.objects(CharacterEntity.self).filter("id IN %@", ids)
-           return Array(results)
+         return repository.fetchCharacters(by: ids)
     }
     func filteredLocations(searchText: String) -> [LocationEntity] {
         if searchText.isEmpty {

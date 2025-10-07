@@ -8,19 +8,17 @@ import RealmSwift
 
 class EpisodeViewModel: ObservableObject {
     @Published var episodes: [EpisodeEntity] = []
-    private let realmManager: RealmManager
+    private let repository: Repository
 
-    init(realmManager: RealmManager) {
-        self.realmManager = realmManager
+    init(repository: Repository) {
+        self.repository = repository
         fetchEpisodes()
     }
     func fetchEpisodes() {
-        let results = realmManager.realm.objects(EpisodeEntity.self)
-        self.episodes = Array(results)
+        self.episodes = repository.fetchAllEpisodes()
     }
     func fetchCharacters(by ids: [Int]) -> [CharacterEntity] {
-        let results = realmManager.realm.objects(CharacterEntity.self).filter("id IN %@", ids)
-        return Array(results)
+        repository.fetchCharacters(by: ids)
     }
     func filteredEpisodes(searchText: String) -> [EpisodeEntity] {
         if searchText.isEmpty {

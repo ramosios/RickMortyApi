@@ -10,8 +10,8 @@ struct LocationsView: View {
     @StateObject private var viewModel: LocationsViewModel
     @State private var searchText: String = ""
 
-    init(realmManager: RealmManager) {
-        _viewModel = StateObject(wrappedValue: LocationsViewModel(realmManager: realmManager))
+    init(repository: Repository) {
+        _viewModel = StateObject(wrappedValue: LocationsViewModel(repository: repository))
     }
 
     var body: some View {

@@ -8,23 +8,24 @@
 import SwiftUI
 
 struct TabBarView: View {
+    let repository: Repository
     @State private var selectedTab: CustomTabBarView.Tab = .characters
     @EnvironmentObject private var realmManager: RealmManager
 
     var body: some View {
         TabView(selection: $selectedTab) {
-            CharactersView(realmManager: realmManager)
+            CharactersView(repository: repository)
                 .tag(CustomTabBarView.Tab.characters)
                 .tabItem {
                     Label(CustomTabBarView.Tab.characters.title, systemImage: CustomTabBarView.Tab.characters.iconName)
                 }
 
-            LocationsView(realmManager: realmManager)
+            LocationsView(repository: repository)
                 .tag(CustomTabBarView.Tab.locations)
                 .tabItem {
                     Label(CustomTabBarView.Tab.locations.title, systemImage: CustomTabBarView.Tab.locations.iconName)
                 }
-            EpisodesView(realmManager: realmManager)
+            EpisodesView(repository: repository)
                 .tag(CustomTabBarView.Tab.episodes)
                 .tabItem {
                     Label(CustomTabBarView.Tab.episodes.title, systemImage: CustomTabBarView.Tab.episodes.iconName)

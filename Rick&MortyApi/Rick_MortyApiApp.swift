@@ -9,12 +9,16 @@ import SwiftUI
 
 @main
 struct Rick_MortyApiApp: App {
-    @StateObject private var realmManager = RealmManager()
+    private let repository: Repository
+
+    init() {
+        let realmManager = RealmManager()
+        self.repository = Repository(realmManager: realmManager)
+    }
 
     var body: some Scene {
         WindowGroup {
-            TabBarView()
-                .environmentObject(realmManager)
+            TabBarView(repository: repository)
         }
     }
 }

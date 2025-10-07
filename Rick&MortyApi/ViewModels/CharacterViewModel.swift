@@ -9,10 +9,10 @@ import SwiftUICore
 
 class CharacterViewModel: ObservableObject {
     @Published var characters: [CharacterEntity] = []
-    private let realmManager: RealmManager
+    private let repository: Repository
 
-    init(realmManager: RealmManager) {
-        self.realmManager = realmManager
+    init(repository: Repository) {
+        self.repository = repository
         fetchCharacters()
     }
     
@@ -29,16 +29,14 @@ class CharacterViewModel: ObservableObject {
         }
 
     func fetchCharacters() {
-        let results = realmManager.realm.objects(CharacterEntity.self)
-        self.characters = Array(results)
+        characters = repository.fetchAllCharacters()
     }
 
     func fetchLocation(by id: Int) -> LocationEntity? {
-        return realmManager.realm.objects(LocationEntity.self).filter("id == %@", id).first
+        return repository.fetchLocation(by: id)
     }
 
     func fetchEpisodes(by ids: [Int]) -> [EpisodeEntity] {
-        let results = realmManager.realm.objects(EpisodeEntity.self).filter("id IN %@", ids)
-        return Array(results)
+        return repository.fetchEpisodes(by: ids)
     }
 }
