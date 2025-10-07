@@ -21,7 +21,6 @@ class RealmManager: ObservableObject {
 
             do {
                 try FileManager.default.copyItem(at: bundledRealmURL, to: destinationURL)
-                print("Preloaded Realm database copied successfully.")
             } catch {
                 fatalError("Error copying preloaded Realm database: \(error)")
             }
@@ -35,5 +34,9 @@ class RealmManager: ObservableObject {
         } catch {
             fatalError("Error initializing Realm with preloaded file: \(error)")
         }
+    }
+    //init for testing purposes
+    init(realm: Realm) {
+        self.realm = realm
     }
 }

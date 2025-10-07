@@ -8,10 +8,10 @@ import Foundation
 import RealmSwift
 
 class Repository {
-    private let service: RickAndMortyService
+    private let service: RickAndMortyServicing
     private let realmManager: RealmManager
 
-    init(service: RickAndMortyService = RickAndMortyService(), realmManager: RealmManager) {
+    init(service: RickAndMortyServicing = RickAndMortyService(), realmManager: RealmManager) {
         self.service = service
         self.realmManager = realmManager
     }

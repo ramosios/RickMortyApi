@@ -25,7 +25,13 @@ enum RickAndMortyServiceError: Error, LocalizedError {
     }
 }
 
-struct RickAndMortyService {
+protocol RickAndMortyServicing {
+    func fetchCharacter(id: Int) async throws -> Character
+    func fetchEpisode(id: Int) async throws -> Episode
+    func fetchLocation(id: Int) async throws -> Location
+}
+
+struct RickAndMortyService: RickAndMortyServicing {
     private let baseURL = "https://rickandmortyapi.com/api"
 
     func fetchCharacter(id: Int) async throws -> Character {
@@ -53,9 +59,9 @@ struct RickAndMortyService {
             throw RickAndMortyServiceError.decodingError(error)
         } catch {
             throw RickAndMortyServiceError.networkError(error)
+        }
     }
 
-        }
     func fetchLocation(id: Int) async throws -> Location {
         guard let url = URL(string: "\(baseURL)/location/\(id)") else {
             throw RickAndMortyServiceError.invalidURL
