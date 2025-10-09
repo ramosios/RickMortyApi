@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		C14959A12E8FD60A008FD49B /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = C14959A02E8FD60A008FD49B /* RealmSwift */; };
+		C1495E6A2E97121A008FD49B /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = C1495E692E97121A008FD49B /* RealmSwift */; };
+		C1495E6B2E97121A008FD49B /* RealmSwift in Embed Frameworks */ = {isa = PBXBuildFile; productRef = C1495E692E97121A008FD49B /* RealmSwift */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -26,6 +28,20 @@
 			remoteInfo = "Rick&MortyApi";
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		C1495E6C2E97121A008FD49B /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				C1495E6B2E97121A008FD49B /* RealmSwift in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		C14958882E8FCCBB008FD49B /* Rick&MortyApi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Rick&MortyApi.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -64,6 +80,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C1495E6A2E97121A008FD49B /* RealmSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,6 +100,7 @@
 				C149588A2E8FCCBB008FD49B /* Rick&MortyApi */,
 				C149589B2E8FCCBD008FD49B /* Rick&MortyApiTests */,
 				C14958A52E8FCCBD008FD49B /* Rick&MortyApiUITests */,
+				C1495E682E97121A008FD49B /* Frameworks */,
 				C14958892E8FCCBB008FD49B /* Products */,
 			);
 			sourceTree = "<group>";
@@ -95,6 +113,13 @@
 				C14958A22E8FCCBD008FD49B /* Rick&MortyApiUITests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		C1495E682E97121A008FD49B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -130,6 +155,7 @@
 				C14958942E8FCCBD008FD49B /* Sources */,
 				C14958952E8FCCBD008FD49B /* Frameworks */,
 				C14958962E8FCCBD008FD49B /* Resources */,
+				C1495E6C2E97121A008FD49B /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -141,6 +167,7 @@
 			);
 			name = "Rick&MortyApiTests";
 			packageProductDependencies = (
+				C1495E692E97121A008FD49B /* RealmSwift */,
 			);
 			productName = "Rick&MortyApiTests";
 			productReference = C14958982E8FCCBD008FD49B /* Rick&MortyApiTests.xctest */;
@@ -581,6 +608,11 @@
 
 /* Begin XCSwiftPackageProductDependency section */
 		C14959A02E8FD60A008FD49B /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C149599F2E8FD60A008FD49B /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
+		};
+		C1495E692E97121A008FD49B /* RealmSwift */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = C149599F2E8FD60A008FD49B /* XCRemoteSwiftPackageReference "realm-swift" */;
 			productName = RealmSwift;
